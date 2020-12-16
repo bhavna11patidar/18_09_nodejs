@@ -1,0 +1,14 @@
+1. Create a node project folder
+2. Create node application using npm init - it will create a package.json file
+3. Create a new file index.js
+4. Install express using
+    npm i express -s
+5. Add express library in index.js
+6. Define port no
+
+7. Install nodemon globally to recompile automatically after change in code
+npm i nodemon -g
+
+8. Define Routes (/, about, contact) with get request
+
+
