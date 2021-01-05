@@ -1,3 +1,4 @@
+Lecture 1:
 1. Create a node project folder
 2. Create node application using npm init - it will create a package.json file
 3. Create a new file index.js
@@ -11,4 +12,39 @@ npm i nodemon -g
 
 8. Define Routes (/, about, contact) with get request
 
+
+Lecture 2:
+1. Install express-handlebars
+npm install express-handlebars
+url: https://www.npmjs.com/package/express-handlebars
+
+
+2. require express in index.js and define view engine
+3. create folder structure :
+    views->
+        home.handlebars
+        about.handlebars 
+        layouts->
+            main.handlebars
+
+4. render the handlebar in index.js
+
+Lecture 3:
+1. define separate partial for navbar and use it inside main.handlebars 
+2. create new handlebars (add-task.handlebars) for add Task form and define it in navbar
+3. create new route folder and define Task.js for task Routes
+4. use task route in index.js
+5. install body parser module and use it inside index.js
+    npm i body-parser -s
+6. Create new database in mongoDbAtlas
+7. install mongoose using
+    npm i mongoose -s
+   and Create MongoDbConnection
+8. Create model for task
+9. Use Task Model in task.js (Route)
+
+
+Lecture 4:
+1. Form validation in add-task handlebar
+2. Create a view-task.handlebar 
 

@@ -1,0 +1,46 @@
+<!--<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 card p-5">
+            <h1 class="text-primary">Edit Task</h1>
+            <form action="/update-task" method="post">
+                {{#each errors}}
+                    <p class="text-danger">{{msg}}</p>  
+                {{/each}}
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" value="{{title}}"/>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control">{{description}}</textarea>
+                </div>
+                <input type="hidden" name="_id" value="{{_id}}"/>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 card p-5">
+            <h1 class="text-primary">Edit Task</h1>
+            <form action="/update-task/{{_id}}?_method=PUT" method="post">
+            <input type="hidden" name="_method" value="PUT" />
+                {{#each errors}}
+                    <p class="text-danger">{{msg}}</p>  
+                {{/each}}
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" value="{{title}}"/>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control">{{description}}</textarea>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

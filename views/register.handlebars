@@ -1,0 +1,22 @@
+<div class="container mt-5">
+<h1 class="text-center text-info">User Registration</h1>
+<form action="/register" method="post">
+  {{#each errors}}
+    <div class="alert alert-danger">{{msg}}</div>
+  {{/each}}
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" name="name" value="{{name}}">
+  </div>
+    <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control" name="email" value="{{email}}">
+    </div>
+    <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" value="{{password}}">
+    </div>
+ 
+  <button type="submit" class="btn btn-primary">SignUp</button>
+</form>
+</div>
