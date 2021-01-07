@@ -1,7 +1,8 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
-module.exports = function (passport) {
+
+/*module.exports = function (passport) {
   passport.use(
     new LocalStrategy({ usernameField : "email" }, (email, password, done) => {
       
@@ -42,3 +43,57 @@ module.exports = function (passport) {
     });
   });
 };
+*/
+
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+module.exports=function(passport){  
+  passport.use(new GoogleStrategy({
+    clientID: require('./keys').googleClientID,
+    clientSecret: require('./keys').googleClientSecret,
+    callbackURL: "/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    //console.log(profile);
+    /*User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+    */
+
+      User.findOne({googleId:profile.id})
+        .then(user=>{
+          if(user){
+            cd(null,user )
+          }
+          else{
+            const newUser={
+              googleId:profile.id,
+              email:profile.emails[0].value,
+              name:profile.displayName,
+              password:"1234",
+            }
+           new User(newUser).save()
+            .then(user=>{
+              cb(null,user)
+            })
+            .catch(err=>{
+              console.log(err);
+            })
+          }
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+
+  }
+));
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+      //console.log(user);
+    done(err, user);
+  });
+});
+}

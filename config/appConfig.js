@@ -1,5 +1,5 @@
 module.exports={
     username:'@@@',
     password:'@@@',
-    dbname:'@@@',
+    dbname:'crud',
 }
